@@ -1,9 +1,10 @@
 $(document).ready(function() {
+  $(".searchResults").hide();
   $("#submitbtn").on("click", function(event) {
     var search = $("input").val();
     //it's pulling the array(full) and not the individual items from the array
       event.preventDefault();
-
+      $(".searchResults").show();
     getStock(search);
     // getForecast(search);
     //   console.log(citiesArray);
@@ -26,23 +27,19 @@ $(document).ready(function() {
     }).then(function(response) { 
       
       console.log(response)
-      console.log(response.iexRealtimePrice)
-  // $(".city").empty();
+      $(".companyName").append(response.companyName);
+      $(".companySymbol").append(response.symbol);
+      $(".primaryExchange").append(response.primaryExchange);
 
-      // //create and add current days weather area
-      // var title =$("<h1>").text(response.name + " " +presentMonth + "/" + presentDay + "/" + presentYear).addClass("city-title");
-      // $(".city").append(title);
-      // var temperature = $("<p>").text("Temperature: " + response.main.temp);
-      // $(".city").append(temperature);
-      // var humidity = $("<p>").text("Humidity: " + response.main.humidity);
-      // $(".city").append(humidity);
-      // var windspd = $("<p>").text("Wind Spead: " + response.wind.speed);
-      // $(".city").append(windspd);
-      // var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-      // $(".city-title").append(img);
-      // // var UVIndex =getUVIndex(response.coord.lat, response.coord.lon);
-      // // $(".city").append(UVIndex);
-      // getUVIndex(response.coord.lat, response.coord.lon);
+
+      $('.resultsTable').append( '<tr>' + '<td>' + response.iexRealtimePrice + '</td>' + '<td>' + 'RealtimePrice' + '</td>' + '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + response.previousClose + '</td>' + '<td>' + 'previous close' + '</td>' + '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + response.week52High + '</td>' + '<td>' + 'week52High' + '</td>' + '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + response.week52Low + '</td>' + '<td>' + 'week52Low' + '</td>' + '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + response.change + '</td>' + '<td>' + 'change' + '</td>' + '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + response.changePercent + '</td>' + '<td>' + 'changePercent' + '</td>' + '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + response.ytdChange + '</td>' + '<td>' + 'ytdChange' + '</td>' + '</tr>' );
+
     });
     // $("#today").append();
     
