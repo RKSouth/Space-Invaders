@@ -1,14 +1,37 @@
 let canvasX= 1000;
 let canvasY= 1000;
 
+let params = {
+
+  // height
+  height: 100,
+  heightMin: 10,
+  heightMax: 200,
+ //width
+  width: 75,
+  widthMin:10,
+  widthMax:200,
+};
+
+
+
+// the gui object
+let gui;
+
+// let changeX = 75;
+// let changeY = 100;
+
 function setup() {
   createCanvas(canvasX, canvasY);
+  gui = createGui('Number of Circles');
+  gui.addObject(params);
 }
 
 
 
 function draw() {
-
+  changeY = params.height;
+  changeX = params.width;
 stroke(126);
 // GRID GUIDE
 // line(500,0,500,50);
@@ -21,8 +44,7 @@ let topCntrOne = 450;
 let topCntrTwo = 200;
 let topCntrThree = 650;
 let topCntrFour = 200;
-let changeX = 75
-let changeY = 100
+
 // TOP LINE
 // left line
 line(topCntrOne ,topCntrTwo ,topCntrOne - changeX, topCntrTwo + changeY);
@@ -43,10 +65,10 @@ line(topCntrThree, topCntrFour + firstBtmY, topCntrThree + changeX,  topCntrFour
 
 // LEFT LINE
 
-let leftCntrOne = 150;
-let leftCntrTwo = 390;
-let leftCntrThree = 150;
-let leftCntrFour = 610;
+let leftCntrOne = 300;
+let leftCntrTwo = 400 ;
+let leftCntrThree = 300;
+let leftCntrFour = 600;
 
 // left line
 line(leftCntrOne,leftCntrTwo, leftCntrOne + changeX, leftCntrTwo - changeY);
@@ -55,7 +77,7 @@ line(leftCntrOne, leftCntrTwo, leftCntrThree, leftCntrFour);
 // // right line
 line(leftCntrThree, leftCntrFour,  leftCntrThree + changeX, leftCntrFour + changeY);
 
-let firstRightX = 800;
+let firstRightX = 500;
 let secondRightX = firstRightX-changeX; 
 
 // RIGHT LINE
