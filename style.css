@@ -1,0 +1,19 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button {
+    background: none;
+    border: none;
+    color:goldenrod;
+}
+table{
+    border-spacing: 7px;
+    margin-left:10%;
+    margin-right:10%;
+    margin-top:2%;
+    text-align: center;
+}
+th {
+    font-size: larger;
+}

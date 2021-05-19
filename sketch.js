@@ -32,13 +32,13 @@ $(document).ready(function() {
       $(".primaryExchange").append(response.primaryExchange);
 
 
-      $('.resultsTable').append( '<tr>' + '<td>' + response.iexRealtimePrice + '</td>' + '<td>' + 'RealtimePrice' + '</td>' + '</tr>' );
-      $('.resultsTable').append( '<tr>' + '<td>' + response.previousClose + '</td>' + '<td>' + 'previous close' + '</td>' + '</tr>' );
-      $('.resultsTable').append( '<tr>' + '<td>' + response.week52High + '</td>' + '<td>' + 'week52High' + '</td>' + '</tr>' );
-      $('.resultsTable').append( '<tr>' + '<td>' + response.week52Low + '</td>' + '<td>' + 'week52Low' + '</td>' + '</tr>' );
-      $('.resultsTable').append( '<tr>' + '<td>' + response.change + '</td>' + '<td>' + 'change' + '</td>' + '</tr>' );
-      $('.resultsTable').append( '<tr>' + '<td>' + response.changePercent + '</td>' + '<td>' + 'changePercent' + '</td>' + '</tr>' );
-      $('.resultsTable').append( '<tr>' + '<td>' + response.ytdChange + '</td>' + '<td>' + 'ytdChange' + '</td>' + '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + 'RealtimePrice' +'</td>' + '<td>' + response.iexRealtimePrice + '</td>' + '<td><button class="iexRealTimePrice">' + 'Save Data' +'</button></td>'+ '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + 'previous close' + '</td>' + '<td>'  + response.previousClose + '</td>' + '<td><button class="previousClose">' + 'Save Data' +'</button></td>'+ '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + 'week52High' + '</td>' + '<td>'  + response.week52High + '</td>' + '<td><button class="week52High">' + 'Save Data' +'</button></td>'+ '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + 'week52Low' + '</td>' + '<td>'  + response.week52Low + '</td>' + '<td><button class="week52Low">' + 'Save Data' +'</button></td>' + '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + 'change' + '</td>' + '<td>'  + response.change + '</td>'+ '<td><button class="change">' + 'Save Data' +'</button></td>' +  '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + 'changePercent' + '</td>' + '<td>' + response.changePercent + '</td>'+ '<td><button class="changePercent">' + 'Save Data' +'</button></td>' + '</tr>' );
+      $('.resultsTable').append( '<tr>' + '<td>' + 'ytdChange' +  '</td>' + '<td>' + response.ytdChange +'</td>' + '<td><button class="ytdChange">' + 'Save Data' +'</button></td>' + '</tr>' );
 
     });
     // $("#today").append();
