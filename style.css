@@ -51,10 +51,10 @@ th {
   
   /* Create two equal columns that floats next to each other */
   .column {
+    text-align: center;
     float: left;
-    width: 40%;
+    width: 20%;
     padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
   }
   .row{
     margin-left:10%;
@@ -65,4 +65,13 @@ th {
     content: "";
     display: table;
     clear: both;
+  }
+
+  #header {
+      max-height: fit-content;
+      font-weight: bolder;
+      border-style: solid;
+     border-color: goldenrod;
+
+    
   }
