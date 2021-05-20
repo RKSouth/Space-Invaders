@@ -25,7 +25,7 @@ $(document).ready(function () {
 
     finalNames.map(item => (
         $('#name').append(
-            '<p">' + item + '</p>'
+            '<p>' + item + '</p>'
         )
 
     ));
