@@ -21,10 +21,10 @@ console.log(keyNames)
 keyNames.map(item => (
         
 
-    $('#results').append( 
+    $('#name').append( 
         // '<table>'+ '<tr id="savedTable">'+ 
 // '<td id="key">' + key + '</td>' + 
-'<td id="key">' + item + '</td>'
+'<p">' + item + '</p>'
 //  + '</tr>' + '</table>'
  )
 
@@ -40,7 +40,7 @@ var values = [],
     while ( i-- ) {
         values.push( localStorage.getItem(keys[i]) );
     }
-console.log(values)
+console.log("values" + values)
 
     // console.log(data);
     // console.log(name);
@@ -49,10 +49,9 @@ console.log(values)
         
 
         $('#results').append( 
-        // '<table>'+ '<tr id="savedTable">'+ 
-    // '<td id="key">' + key + '</td>' + 
-    '<td id="key">' + number + '</td>' 
-    // + '</tr>' + '</table>'
+   
+    '<p>' + number + '</p>' 
+
     )
 
     ));
