@@ -34,6 +34,17 @@ button {
     color:goldenrod;
   
 }
+table{
+  border-spacing: 7px;
+  margin-left:10%;
+  margin-right:10%;
+  margin-top:2%;
+  text-align: center;
+}
+th {
+  font-size: larger;
+}
+
 #submitbtn {
   font-size: 20px;
 }
@@ -81,6 +92,10 @@ main {
     font-size: 15.5px !important;
   }
 
+  #remove :hover {
+    background-color: #ddd;
+    color: black;
+  }
 
   @media only screen and (max-width: 1196px) {
       p {

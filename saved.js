@@ -18,6 +18,14 @@ $(document).ready(function () {
             '<p><button id="'+ name +'">' + "Remove" + '</button></p>'
         )
     ))
+    
+    $("button").click(function() {
+        console.log(this.id);
+        localStorage.removeItem(this.id);
+        location.reload();
+    });
+
+    
 
     console.log(keyNames[2].indexOf("'s "));
     console.log(keyNames[2].substring( (keyNames[2].indexOf("'s ") + 3) ))
