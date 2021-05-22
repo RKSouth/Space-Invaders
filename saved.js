@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     let keyNames = [];
 
-    allStorage()
+    allStorage();
     for (var name in local) {
         console.log(name);
 
@@ -13,20 +13,28 @@ $(document).ready(function () {
         }
     }
 
+    keyNames.map(name => (
+        $('#remove').append(
+            '<p><button id="'+ name +'">' + "Remove" + '</button></p>'
+        )
+    ))
+
     console.log(keyNames[2].indexOf("'s "));
     console.log(keyNames[2].substring( (keyNames[2].indexOf("'s ") + 3) ))
     console.log(keyNames)
+    
+    
 
     finalNames = [];
     for (i=0; i<keyNames.length; i++){
         finalNames.push(keyNames[i].substring( (keyNames[i].indexOf("'s ") + 3) ))
     }
     console.log(finalNames);
-
     finalNames.map(item => (
         $('#name').append(
             '<p>' + item + '</p>'
         )
+
 
     ));
     function allStorage() {
@@ -47,7 +55,7 @@ $(document).ready(function () {
         // $('#savedResults').append(  '<table>' );
         values.map(number => (
             $('#results').append(
-                '<p>' + number + '</p>'
+                '<p>' + number + '</p>' 
             )
         ));
     }

@@ -23,7 +23,7 @@
     color: white;
   }
 
-
+/* general */
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -32,18 +32,21 @@ button {
     background: none;
     border: none;
     color:goldenrod;
+  
 }
-table{
-    border-spacing: 7px;
-    margin-left:10%;
-    margin-right:10%;
-    margin-top:2%;
-    text-align: center;
-}
-th {
-    font-size: larger;
+#submitbtn {
+  font-size: 20px;
 }
 
+input {
+  width: 400px;
+  height: 40px;
+  font-size: 20px;
+}
+
+main {
+ margin: 10px;
+}
 
 * {
     box-sizing: border-box;
@@ -72,14 +75,21 @@ th {
       font-weight: bolder;
       border-style: solid;
      border-color: goldenrod;
-
-    
   }
+
+  #remove {
+    font-size: 15.5px !important;
+  }
+
 
   @media only screen and (max-width: 1196px) {
       p {
           font-size:13px;
       }
+      #remove {
+        font-size: 6px !important;
+      }
+      
      
   }
   @media only screen and (max-width: 786px) {
@@ -96,5 +106,9 @@ th {
             height:40px !important;
             padding-top:10%;
         }
-   
+      }
+     @media only screen and (max-width: 490px) {
+      input {
+        width: 300px;
+      }
 }
