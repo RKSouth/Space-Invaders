@@ -1,18 +1,32 @@
 $(document).ready(function() {
-  $(".searchResults").hide();
-  $("#submitbtn").on("click", function(event) {
-    var search = $("input").val();
+
+  $("#submit").on("click", function(event) {
+
+    let resultsTable = $(".resultsTable");
+  
+    let str = "";
+    for (let i=0; i < resultsTable.length; i++) {
+      resultsTable[i].classList.remove("active");
+    }
+  
+    this.classList.add("active");
+    console.log($(".companySymbol"));
+
+    console.log(str);
+
+    $(".resultsTable").text(str);
+    $(".tableHeader").text(str);
+    // clear out old header details
+    $(".companySymbol").empty();
+    $(".primaryExchange").empty();
+    $(".companyName").empty();
+
+
+    const search = $("input").val();
     //it's pulling the array(full) and not the individual items from the array
-      event.preventDefault();
-      $(".searchResults").show();
+       event.preventDefault();
+    // $(".searchResults").show();
     getStock(search);
-    // getForecast(search);
-    //   console.log(citiesArray);
-    //  addCities(search);
-
-
-    // localStorage.removeItem("search");
-    // localStorage.setItem("search",JSON.stringify(citiesArray));
   
 
   });
@@ -25,7 +39,6 @@ $(document).ready(function() {
       url: queryURL,
       method: "GET"
     }).then(function(response) { 
-      
       console.log(response)
       $(".companyName").append(response.companyName);
       $(".companySymbol").append(response.symbol);
