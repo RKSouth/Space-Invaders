@@ -1,16 +1,10 @@
 $(document).ready(function () {
 
     $('.analyzeResults').hide()
-
+    local = localStorage;
     $('li').hover(function () {
         $(this).find('ul > li').stop().slideToggle(400); //This is the slide//You can also use the fadeToggle propertites 
     });
-
-    // set local storage to a variable
-    local = localStorage;
-    // getting things from storage
-    //    allStorage();
-
 
     // getting the key names for each item
     let keyNames = [];
@@ -38,7 +32,6 @@ $(document).ready(function () {
         )
     ))
 
-
     finalNames = [];
     for (i = 0; i < keyNames.length; i++) {
         // removing the symbol and possessive from key name and date to get the description 
@@ -54,36 +47,37 @@ $(document).ready(function () {
         $('#nameDropDown').append(
             '<li><button id="' + item + '">' + item + '<button/></li>'
         )
-
-
     ));
+
     function allStorage(keyHolder) {
         console.log(keyHolder)
-       myKey = JSON.stringify(keyHolder);
-       console.log(myKey)
+
         // create values array
         var values = [],
             keys = Object.keys(localStorage),
             i = keys.length;
-        console.log(keys[0].slice(0, keys[0].indexOf("'s ")));
-      
+
         while (i--) {
             if (keys[i].slice(0, keys[i].indexOf("'s ")).includes(keyHolder)) {
-                console.log(keys[i])
+                // console.log(keys[i])
+                values.push(localStorage.getItem(keys[i]));
+            } 
+            if (keys[i].substring(keys[i].indexOf(" "), (keys[i].indexOf("/") - 2)).includes(keyHolder)){
+                // console.log(keys[i]);
+                // console.log(keys[i].substring(keys[i].indexOf(" "), (keys[i].indexOf("/") - 2)));
                 values.push(localStorage.getItem(keys[i]));
             }
-            
+            if (keys[i].substring((name.indexOf("/") - 2)).includes(keyHolder)){
+                console.log(keys[i]);
+                console.log(keys[i].substring((name.indexOf("/") - 2)));
+                values.push(localStorage.getItem(keys[i]));
+            }   
         }
-
-        console.log(values)
         values.map(number => (
             $('#results').append(
                 '<li><p>' + number + '</p></li>'
             )
         ));
-     
-       
-        console.log(values)
     }
 
 
@@ -94,7 +88,6 @@ $(document).ready(function () {
         symbol.push(keyNames[i].slice(0, keyNames[i].indexOf("'s ")));
     }
 
-    //    var names = ["Mike","Matt","Nancy","Adam","Jenny","Nancy","Carl"];
     var uniqueNames = [];
     $.each(symbol, function (i, el) {
         if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
@@ -106,8 +99,6 @@ $(document).ready(function () {
             '<li><button id="' + stock + '">' + stock + '<button/></li>'
         )
     )
-
-    console.log(symbol);
 
     $("button").click(function () {
         // console.log(this.id);
@@ -128,7 +119,6 @@ $(document).ready(function () {
 
                 metric = []
                 metric.push(name.substring(name.indexOf(" "), (name.indexOf("/") - 2)))
-
                 metric.map(metric =>
                     $('#metric').append(
                         '<li><p>' + metric + '</p></li>'
@@ -141,10 +131,8 @@ $(document).ready(function () {
                         '<li><p>' + date + '</p></li>'
                     ))
 
-
             }
         }
-
     });
 
 
