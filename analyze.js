@@ -28,7 +28,7 @@ $(document).ready(function () {
 
     uniqueDates.map(item => (
         $("#dateDropDown").append(
-            '<li><button id="' + item + '">' + item + '<button/></li>'
+            '<li><button class="dropButton" id="' + item + '">' + item + '<button/></li>'
         )
     ))
 
@@ -45,7 +45,7 @@ $(document).ready(function () {
 
     uniqueMetrics.map(item => (
         $('#nameDropDown').append(
-            '<li><button id="' + item + '">' + item + '<button/></li>'
+            '<li><button class="dropButton" id="' + item + '">' + item + '<button/></li>'
         )
     ));
 
@@ -96,11 +96,11 @@ $(document).ready(function () {
     // map and display array to a list
     uniqueNames.map(stock =>
         $('#stockDropDown').append(
-            '<li><button id="' + stock + '">' + stock + '<button/></li>'
+            '<li><button class="dropButton" id="' + stock + '">' + stock + '<button/></li>'
         )
     )
 
-    $("button").click(function () {
+    $(".dropButton").click(function () {
         // console.log(this.id);
         keyHolder = this.id
         $('.analyzeResults').show()
