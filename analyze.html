@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Space Invaders</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="analyze.js"></script>
+</head>
+
+<body>
+
+    <NavBar>
+        <div class="topnav">
+            <a href="index.html">Home</a>
+            <a href="saved.html">Saved</a>
+            <a class="here" href="analyze.html">Analysis</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
+        </div>
+    </NavBar>
+
+    <header>
+
+        <h1>Take Flight in Your Rocket Ship</h1>
+        <h4>Become the Master of all Space</h4>
+
+    </header>
+
+    <main>
+        <div>
+            <ul  class="analyzeUnorderedList" id="sortable">
+                <li class="analyzeList"><a href="#">Stock Symbol</a>
+                    <ul  class="analyzeUnorderedList" id="stockDropDown">
+                    </ul>
+                </li>
+                <li class="analyzeList"><a href="#">Metric</a>
+                    <ul  class="analyzeUnorderedList"id="nameDropDown">
+                    </ul>
+                </li>
+                <li class="analyzeList"><a href="#">Date</a>
+                    <ul  class="analyzeUnorderedList" id="dateDropDown">
+                    </ul>
+                </li>
+               
+
+            </ul>
+
+
+
+
+
+        </div>
+        <br>
+        <br />
+    </main>
+
+
+    <div class="analyzeResults" display="none">
+    
+        <div class="row" id="header">
+            <div class="columnAnalyze">
+                <p>Stock</p>
+
+            </div>
+            <div class="columnAnalyze">
+                <p>Metric</p>
+
+            </div>
+            <div class="columnAnalyze">
+                <p>Data</p>
+
+            </div>
+            <div class="columnAnalyze">
+              <p>Saved Time</p>
+
+          </div>
+        
+        </div>
+
+    <div class="row">
+        <ul class="columnAnalyze" id="stock"style="margin-top: -15px">
+        </ul>
+        <ul class="columnAnalyze" id="metric" style="margin-top: -15px">
+        </ul>
+        <ul class="columnAnalyze" id="results" style="margin-top: -15px;">
+        </ul>
+        <ul class="columnAnalyze" id="date" style="margin-top: -15px;">
+        </ul>
+      </div>
+
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,24 +1,10 @@
 $(document).ready(function () {
     // set local storage to a variable
     local = localStorage;
-
     let keyNames = [];
 
     // getting things from storage
     allStorage();
-
-    // today's date
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    today = mm + '/' + dd + '/' + yyyy;
-    // document.write(today);
-    // $(".theDate").append(today)
-
-    
-
     // getting the key names for each item
     for (var name in local) {
         // we need to remove the names we don't want to display
@@ -70,24 +56,20 @@ $(document).ready(function () {
         $('#name').append(
             '<p  class="name" id="' + item + '">' + item + '</p>'
         )
-
-
     ));
+
+
     function allStorage() {
         // create values array
         var values = [],
             keys = Object.keys(localStorage),
             i = keys.length;
 
-
         while (i--) {
             values.push(localStorage.getItem(keys[i]));
         }
         console.log("values" + values)
 
-        // console.log(data);
-        // console.log(name);
-        // $('#savedResults').append(  '<table>' );
         values.map(number => (
             $('#results').append(
                 '<p>' + number + '</p>'
