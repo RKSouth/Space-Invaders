@@ -99,7 +99,7 @@ $(document).ready(function () {
       })
 
       $(".changePercent").on("click", function (event) {
-        const key = response.symbol + "'s " + "change percent" + today
+        const key = response.symbol + "'s " + "changePercent" + today
         localStorage.setItem(key, response.changePercent);
         alert(response.symbol + "'s " + "change percent was saved");
 

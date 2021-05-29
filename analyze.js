@@ -17,7 +17,8 @@ $(document).ready(function () {
             keyNames.push(name);
         }
     }
-    //    console.log(keyNames[3].substring(keyNames[3].indexOf(":") - 2))
+// ------------------------------------Building Drop Down Menus -----------------------------------------
+
     let theDate = [];
     for (i = 0; i < keyNames.length; i++) {
         theDate.push(keyNames[i].substring((keyNames[i].indexOf("/") - 2)))
@@ -52,19 +53,17 @@ $(document).ready(function () {
         // pushing symbol name to symbol array, making sure to remove possessives and spacing
         symbol.push(keyNames[i].slice(0, keyNames[i].indexOf("'s ")));
     }
-
     var uniqueNames = [];
     $.each(symbol, function (i, el) {
         if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
     });
-
     // map and display array to a list
     uniqueNames.map(stock =>
         $('#stockDropDown').append(
             '<li><button class="stockButton" id="' + stock + '">' + stock + '<button/></li>'
         )
     )
-
+//  ---------------------------- Getting the Data For Each Drop Down ------------------------------
     function dateStorage(keyHolder) {
         console.log(keyHolder)
 
@@ -136,17 +135,12 @@ $(document).ready(function () {
         ));
     }
    
-  
-
-    $(".dateButton").click(function () {
-        // console.log(this.id);
-        keyHolder = this.id
-        $('.analyzeResults').show()
-        dateStorage(keyHolder);
-        for (var name in local) {
+    function tableBuilder(keyHolder) {
+        console.log(keyHolder + "was passed through tableBuilder")
+          for (var name in local) {
             // console.log(name);
             // we need to remove the names we don't want to display
-            if (name.includes(this.id)) {
+            if (name.includes(keyHolder)) {
                 symbol = []
                 symbol.push(name.slice(0, name.indexOf("'s")))
                 symbol.map(stock =>
@@ -169,6 +163,14 @@ $(document).ready(function () {
 
             }
         }
+    }
+
+    $(".dateButton").click(function () {
+        // console.log(this.id);
+        keyHolder = this.id
+        $('.analyzeResults').show()
+        dateStorage(keyHolder);
+        tableBuilder(keyHolder)
     });
 
     $(".stockButton").click(function () {
@@ -176,32 +178,8 @@ $(document).ready(function () {
         keyHolder = this.id
         $('.analyzeResults').show()
         stockStorage(keyHolder);
-        for (var name in local) {
-            // console.log(name);
-            // we need to remove the names we don't want to display
-            if (name.includes(this.id)) {
-                symbol = []
-                symbol.push(name.slice(0, name.indexOf("'s")))
-                symbol.map(stock =>
-                    $('#stock').append(
-                        '<li><p>' + stock + '</p></li>'
-                    )
-                )
-                metric = []
-                metric.push(name.substring(name.indexOf(" "), (name.indexOf("/") - 2)))
-                metric.map(metric =>
-                    $('#metric').append(
-                        '<li><p>' + metric + '</p></li>'
-                    ))
-                dateSaved = []
-                dateSaved.push(name.substring((name.indexOf("/") - 2)))
-                dateSaved.map(date =>
-                    $('#date').append(
-                        '<li><p>' + date + '</p></li>'
-                    ))
+        tableBuilder(keyHolder);
 
-            }
-        }
     });
 
     $(".metricButton").click(function () {
@@ -209,32 +187,8 @@ $(document).ready(function () {
         keyHolder = this.id
         $('.analyzeResults').show()
         metricStorage(keyHolder);
-        for (var name in local) {
-            // console.log(name);
-            // we need to remove the names we don't want to display
-            if (name.includes(this.id)) {
-                symbol = []
-                symbol.push(name.slice(0, name.indexOf("'s")))
-                symbol.map(stock =>
-                    $('#stock').append(
-                        '<li><p>' + stock + '</p></li>'
-                    )
-                )
-                metric = []
-                metric.push(name.substring(name.indexOf(" "), (name.indexOf("/") - 2)))
-                metric.map(metric =>
-                    $('#metric').append(
-                        '<li><p>' + metric + '</p></li>'
-                    ))
-                dateSaved = []
-                dateSaved.push(name.substring((name.indexOf("/") - 2)))
-                dateSaved.map(date =>
-                    $('#date').append(
-                        '<li><p>' + date + '</p></li>'
-                    ))
+        tableBuilder(keyHolder);
 
-            }
-        }
     });
 
 
