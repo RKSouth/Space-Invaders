@@ -1,5 +1,7 @@
 $(document).ready(function () {
-
+    $("#reset").click(function () { 
+        location.reload();
+    })
     $('.analyzeResults').hide()
     local = localStorage;
     $('li').hover(function () {
@@ -20,15 +22,13 @@ $(document).ready(function () {
     for (i = 0; i < keyNames.length; i++) {
         theDate.push(keyNames[i].substring((keyNames[i].indexOf("/") - 2)))
     }
-
     var uniqueDates = [];
     $.each(theDate, function (i, el) {
         if ($.inArray(el, uniqueDates) === -1) uniqueDates.push(el);
     });
-
     uniqueDates.map(item => (
         $("#dateDropDown").append(
-            '<li><button class="dropButton" id="' + item + '">' + item + '<button/></li>'
+            '<li><button class="dateButton" id="' + item + '">' + item + '<button/></li>'
         )
     ))
 
@@ -37,50 +37,15 @@ $(document).ready(function () {
         // removing the symbol and possessive from key name and date to get the description 
         finalNames.push(keyNames[i].substring((keyNames[i].indexOf("'s ") + 3), (keyNames[i].indexOf("/") - 2)))
     }
-
     var uniqueMetrics = [];
     $.each(finalNames, function (i, el) {
         if ($.inArray(el, uniqueMetrics) === -1) uniqueMetrics.push(el);
     });
-
     uniqueMetrics.map(item => (
         $('#nameDropDown').append(
-            '<li><button class="dropButton" id="' + item + '">' + item + '<button/></li>'
+            '<li><button class="metricButton" id="' + item + '">' + item + '<button/></li>'
         )
     ));
-
-    function allStorage(keyHolder) {
-        console.log(keyHolder)
-
-        // create values array
-        var values = [],
-            keys = Object.keys(localStorage),
-            i = keys.length;
-
-        while (i--) {
-            if (keys[i].slice(0, keys[i].indexOf("'s ")).includes(keyHolder)) {
-                // console.log(keys[i])
-                values.push(localStorage.getItem(keys[i]));
-            } 
-            if (keys[i].substring(keys[i].indexOf(" "), (keys[i].indexOf("/") - 2)).includes(keyHolder)){
-                // console.log(keys[i]);
-                // console.log(keys[i].substring(keys[i].indexOf(" "), (keys[i].indexOf("/") - 2)));
-                values.push(localStorage.getItem(keys[i]));
-            }
-            if (keys[i].substring((name.indexOf("/") - 2)).includes(keyHolder)){
-                console.log(keys[i]);
-                console.log(keys[i].substring((name.indexOf("/") - 2)));
-                values.push(localStorage.getItem(keys[i]));
-            }   
-        }
-        values.map(number => (
-            $('#results').append(
-                '<li><p>' + number + '</p></li>'
-            )
-        ));
-    }
-
-
 
     symbol = []
     for (i = 0; i < keyNames.length; i++) {
@@ -96,15 +61,88 @@ $(document).ready(function () {
     // map and display array to a list
     uniqueNames.map(stock =>
         $('#stockDropDown').append(
-            '<li><button class="dropButton" id="' + stock + '">' + stock + '<button/></li>'
+            '<li><button class="stockButton" id="' + stock + '">' + stock + '<button/></li>'
         )
     )
 
-    $(".dropButton").click(function () {
+    function dateStorage(keyHolder) {
+        console.log(keyHolder)
+
+        // create values array
+        var values = [],
+            keys = Object.keys(localStorage),
+            i = keys.length;
+
+        while (i--) {
+            if (keys[i].substring((name.indexOf("/") - 2)).includes(keyHolder)){
+                console.log(keys[i]);
+                console.log(keys[i].substring((name.indexOf("/") - 2)));
+                values.push(localStorage.getItem(keys[i]));
+                console.log("date values pushed");
+            }   
+        }
+        console.log(values)
+        values.map(number => (
+            $('#results').append(
+                '<li><p>' + number + '</p></li>'
+            )
+        ));
+    }
+
+    function metricStorage(keyHolder) {
+        console.log(keyHolder)
+
+        // create values array
+        var values = [],
+            keys = Object.keys(localStorage),
+            i = keys.length;
+
+        while (i--) {
+  
+            if (keys[i].substring(keys[i].indexOf(" "), (keys[i].indexOf("/") - 2)).includes(keyHolder)){
+                values.push(localStorage.getItem(keys[i]));
+                console.log("metrics pushed")
+            }
+            
+        }
+        values.map(number => (
+            $('#results').append(
+                '<li><p>' + number + '</p></li>'
+            )
+        ));
+    }
+
+    function stockStorage(keyHolder) {
+        console.log(keyHolder)
+
+        // create values array
+        var values = [],
+            keys = Object.keys(localStorage),
+            i = keys.length;
+
+        while (i--) {
+            if (keys[i].slice(0, keys[i].indexOf("'s ")).includes(keyHolder)) {
+                // console.log(keys[i])
+                values.push(localStorage.getItem(keys[i]));
+                console.log("symbol values pushed")
+            } 
+           
+        }
+        console.log(values)
+        values.map(number => (
+            $('#results').append(
+                '<li><p>' + number + '</p></li>'
+            )
+        ));
+    }
+   
+  
+
+    $(".dateButton").click(function () {
         // console.log(this.id);
         keyHolder = this.id
         $('.analyzeResults').show()
-        allStorage(keyHolder);
+        dateStorage(keyHolder);
         for (var name in local) {
             // console.log(name);
             // we need to remove the names we don't want to display
@@ -116,14 +154,12 @@ $(document).ready(function () {
                         '<li><p>' + stock + '</p></li>'
                     )
                 )
-
                 metric = []
                 metric.push(name.substring(name.indexOf(" "), (name.indexOf("/") - 2)))
                 metric.map(metric =>
                     $('#metric').append(
                         '<li><p>' + metric + '</p></li>'
                     ))
-
                 dateSaved = []
                 dateSaved.push(name.substring((name.indexOf("/") - 2)))
                 dateSaved.map(date =>
@@ -134,6 +170,74 @@ $(document).ready(function () {
             }
         }
     });
+
+    $(".stockButton").click(function () {
+        // console.log(this.id);
+        keyHolder = this.id
+        $('.analyzeResults').show()
+        stockStorage(keyHolder);
+        for (var name in local) {
+            // console.log(name);
+            // we need to remove the names we don't want to display
+            if (name.includes(this.id)) {
+                symbol = []
+                symbol.push(name.slice(0, name.indexOf("'s")))
+                symbol.map(stock =>
+                    $('#stock').append(
+                        '<li><p>' + stock + '</p></li>'
+                    )
+                )
+                metric = []
+                metric.push(name.substring(name.indexOf(" "), (name.indexOf("/") - 2)))
+                metric.map(metric =>
+                    $('#metric').append(
+                        '<li><p>' + metric + '</p></li>'
+                    ))
+                dateSaved = []
+                dateSaved.push(name.substring((name.indexOf("/") - 2)))
+                dateSaved.map(date =>
+                    $('#date').append(
+                        '<li><p>' + date + '</p></li>'
+                    ))
+
+            }
+        }
+    });
+
+    $(".metricButton").click(function () {
+        // console.log(this.id);
+        keyHolder = this.id
+        $('.analyzeResults').show()
+        metricStorage(keyHolder);
+        for (var name in local) {
+            // console.log(name);
+            // we need to remove the names we don't want to display
+            if (name.includes(this.id)) {
+                symbol = []
+                symbol.push(name.slice(0, name.indexOf("'s")))
+                symbol.map(stock =>
+                    $('#stock').append(
+                        '<li><p>' + stock + '</p></li>'
+                    )
+                )
+                metric = []
+                metric.push(name.substring(name.indexOf(" "), (name.indexOf("/") - 2)))
+                metric.map(metric =>
+                    $('#metric').append(
+                        '<li><p>' + metric + '</p></li>'
+                    ))
+                dateSaved = []
+                dateSaved.push(name.substring((name.indexOf("/") - 2)))
+                dateSaved.map(date =>
+                    $('#date').append(
+                        '<li><p>' + date + '</p></li>'
+                    ))
+
+            }
+        }
+    });
+
+
 
 
 });
