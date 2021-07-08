@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="style.css" />
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="analyze.js"></script>
+    <script data-require="jquery@*" data-semver="2.1.1" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-require="chart.js@0.2.0" data-semver="0.2.0" src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    
 </head>
 
 <body>
@@ -98,7 +101,18 @@
 
 </div>
 
-
+<div>
+    <canvas id="myChart" width="400" height="400"></canvas>
+  </div>
+  <div>
+    All <input type='checkbox' value='0'/>
+    1 <input type='checkbox'value='1'/>
+    2 <input type='checkbox' value='2'/>
+    3 <input type='checkbox'value='3'/>
+    4 <input type='checkbox' value='4'/>
+    5 <input type='checkbox' value='5'/>
+  </div>
+  <script type="text/javascript" src="analyze.js"></script>
 </body>
 
 </html>
