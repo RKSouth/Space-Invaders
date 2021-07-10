@@ -3,37 +3,48 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const stockSchema = new Schema({
-  day: {
+  today: {
     type: Date,
     default: Date.now
   },
   stocks: [
     {
-      type: {
+      companyName: {
         type: String,
         trim: true,
         required: "Please enter an exercise type"
       },
-      name: {
+      symbol: {
           type: String,
           trim: true,
           required: "Enter a name for exercise"
         },
-      duration: {
+        primaryExchange: {
+            type: String,
+            trim: true,
+            required: "Enter a name for exercise"
+          },
+      iexRealTimePrice: {
           type: Number,
           required:"Please enter a duration"
         },
-      weight: {
+      previousClose: {
           type: Number,
 
         },
-      reps: {
+      week52High: {
         type: Number,
         },
-      sets: {
+      week52Low: {
         type: Number,
         },
-      distance: {
+      change: {
+        type: Number,
+      },
+      changePercent: {
+        type: Number,
+      },
+      ytdChange: {
         type: Number,
       }
 
@@ -48,12 +59,13 @@ const stockSchema = new Schema({
 }
 );
 
-exerciseSchema.virtual("totalDuration").get(function(){
+// need to figure out how I specifically want this to go
+stockSchema.virtual("totalDuration").get(function(){
   return this.exercises.reduce((total,exercise)=>{
     return total + exercise.duration
   }, 0)
 })
 
-const Exercise = mongoose.model("Exercise", exerciseSchema);
+const Stock= mongoose.model("Stock", stockSchema);
 
-module.exports = Exercise;
+module.exports = Stock;
