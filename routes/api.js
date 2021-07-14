@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Stocks = require("../models/stock.js");
 
 
-router.post("/api/stockss", (req, res) => {
+router.post("/api/stocks", (req, res) => {
   Stocks.create({})
     .then(dbstocks => {
       res.json(dbstocks);
